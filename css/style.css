@@ -72,6 +72,7 @@ ul {
   border-radius: 10px;
   clip-path: polygon(0 44px, 0 100% , 100% 100%, 100% 0, 44px 0);
   cursor: pointer;
+  transition: 0.3s;
 }
 .card::before {
   position: absolute;
@@ -83,9 +84,26 @@ ul {
   background-color: #1698d9;
   transform: rotate(-45deg);
 }
+/* HOVER AND SELECTED CARD EFFECTS */
+.card:hover {
+  border-color: #2ea8e6;
+}
+.card.checked  {
+  border-color: #e52e7a;
+}
+.card:hover.card::before {
+  background-color: #2ea8e6;
+}
+.card.checked.card::before   {
+  background-color: #e52e7a;
+} 
+.card:hover .weight {
+  background-color: #2ea8e6;
+}
+.card.checked .weight {
+  background-color: #e52e7a;
+}
 
-  
-  
 .card__description {
   font-size: 1.143rem;
   color: #666666;
