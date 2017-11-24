@@ -65,7 +65,7 @@ ul {
   margin-bottom: 15px;
   padding: 20px 50px;
   background-color: #ffffff;
-  background-image: url(../images/cat.jpg), linear-gradient(-45deg, transparent 15px, #58a 0);;
+  background-image: url(../images/cat.jpg);
   background-repeat: no-repeat;
   background-position: -30px 200px;
   border: 4px solid #1698d9;
@@ -84,25 +84,30 @@ ul {
   background-color: #1698d9;
   transform: rotate(-45deg);
 }
-/* HOVER AND SELECTED CARD EFFECTS */
+/* HOVER, SELECTED AND DISABLED CARD EFFECTS */
 .card:hover {
   border-color: #2ea8e6;
 }
-.card.checked  {
+.card.selected  {
   border-color: #e52e7a;
+}
+.card.disabled {
+  filter: grayscale(100%) contrast(25%);
 }
 .card:hover.card::before {
   background-color: #2ea8e6;
 }
-.card.checked.card::before   {
+.card.selected.card::before   {
   background-color: #e52e7a;
 } 
 .card:hover .weight {
   background-color: #2ea8e6;
 }
-.card.checked .weight {
+.card.selected .weight {
   background-color: #e52e7a;
 }
+
+
 
 .card__description {
   font-size: 1.143rem;
@@ -148,6 +153,9 @@ ul {
   font-size: 0.929rem;
   color: #ffffff;
   line-height: 1.231rem;
+}
+.product-order.disabled {
+  color: #ffff66;
 }
 .product-order__link {
   text-decoration: none;
