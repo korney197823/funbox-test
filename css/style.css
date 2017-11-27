@@ -54,6 +54,7 @@ ul {
 
 .product {
   margin-bottom: 15px;
+  transition: 0.3s;
 }
 
 .card {
@@ -93,12 +94,14 @@ ul {
 }
 .card.disabled {
   filter: grayscale(100%) contrast(25%);
+  cursor: auto;
 }
 .card:hover.card::before {
   background-color: #2ea8e6;
 }
 .card.selected.card::before   {
   background-color: #e52e7a;
+  transition: 0.3s;
 } 
 .card:hover .weight {
   background-color: #2ea8e6;
@@ -112,6 +115,9 @@ ul {
 .card__description {
   font-size: 1.143rem;
   color: #666666;
+}
+.card__description.hover {
+  color: #e52e7a;
 }
 .card__title {
   font-size: 3.429rem;

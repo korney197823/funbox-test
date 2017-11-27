@@ -25,17 +25,36 @@ products.addEventListener('click', e => {
   while (target != product) {
     if (target.classList.contains('card')) {
       highlight(target, 'selected');
-      changeText();
+      
 
       return;
     } else if (target.classList.contains('product-order__link')) {
       highlight(target.parentElement.parentElement.firstElementChild, 'selected');
-      changeText();
       return;
     }
     target = target.parentNode;
   }
 });
+
+
+product.addEventListener('mouseenter', e => {
+  let target = e.target;
+  let card = target.firstElementChild;
+  let description = card.firstElementChild;
+  console.log(target); 
+  
+  if (card.classList.contains('selected')) {
+    description.textContent = texts.description;
+    description.classList.add('hover');
+  }
+
+});
+
+
+
+
+
+
 
 function changeText(element, currentText) {
   if (element.innerHTML === currentText) {
