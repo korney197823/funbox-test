@@ -139,6 +139,7 @@ ul {
   background-color: #1698d9;
   border-radius: 50%;
   color: #ffffff;
+  transition: 0.3s;
 }
 .weight__number {
   font-size: 3rem;

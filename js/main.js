@@ -1,8 +1,13 @@
+'use strict';
+
 const products = document.querySelector('.products');
+const product = document.querySelector('.product');
 const card = document.querySelector('.card');
 const cardDescription = document.querySelector('.card__description');
 const productOrder = document.querySelector('.product-order');
 const buyButton = document.querySelector('.product-order__link');
+const currentDescription = document.querySelector;
+const currentText = productOrder.innerHTML;
 const texts = {
   description: 'Котэ не одобряет?',
   liver: 'Печень утки разварная с артишоками.',
@@ -13,14 +18,38 @@ const texts = {
   chickenDisabled: 'Печалька, с курой закончился'
 };
 
-products.addEventListener('click', (e) => {
+products.addEventListener('click', e => {
   e.preventDefault();
-  const target = e.target;
-  if (target.classList.contains('card') || target.classList.contains('product-order__link')) {
-    card.classList.toggle('selected');
-    productOrder.innerHTML = texts.liver;
+  let target = e.target;
+
+  while (target != product) {
+    if (target.classList.contains('card')) {
+      highlight(target, 'selected');
+      changeText();
+
+      return;
+    } else if (target.classList.contains('product-order__link')) {
+      highlight(target.parentElement.parentElement.firstElementChild, 'selected');
+      changeText();
+      return;
+    }
+    target = target.parentNode;
   }
-  // while(target != this)
-  // card.classList.toggle('selected');
-  // productOrder.innerHTML = texts.liver;
 });
+
+function changeText(element, currentText) {
+  if (element.innerHTML === currentText) {
+    if (element.dataset.order === 'liver') {
+      element.innerHTML = texts.liver;
+    }
+    if (element.dataset.order === 'liver') {
+      element.innerHTML = texts.liver;
+    }
+  } else {
+    element.innerHTML = currentText;
+  }
+}
+
+function highlight(element, className) {
+  element.classList.toggle(className);
+}
