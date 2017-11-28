@@ -1,9 +1,9 @@
 'use strict';
 
 const products = document.querySelector('.products');
+const productList = document.querySelectorAll('.product')
 const product = document.querySelector('.product');
 const card = document.querySelector('.card');
-const cardDescription = document.querySelector('.card__description');
 const productOrder = document.querySelector('.product-order');
 const buyButton = document.querySelector('.product-order__link');
 const currentDescription = document.querySelector;
@@ -21,14 +21,14 @@ const texts = {
 products.addEventListener('click', e => {
   e.preventDefault();
   let target = e.target;
+  
 
   while (target != product) {
     if (target.classList.contains('card')) {
       highlight(target, 'selected');
-      
-
+      changeText()
       return;
-    } else if (target.classList.contains('product-order__link')) {
+    } else if (target.tagName === 'A') {
       highlight(target.parentElement.parentElement.firstElementChild, 'selected');
       return;
     }
@@ -36,24 +36,35 @@ products.addEventListener('click', e => {
   }
 });
 
-
-product.addEventListener('mouseenter', e => {
+productList.forEach(function(product) {
+   product.addEventListener('mouseenter', e => {
+      let target = e.target;
+      console.log(target)
+      console.log(this);
+      let card = target.firstElementChild;
+      let description = card.firstElementChild;
+      
+      
+      if (card.classList.contains('selected')) {
+        description.textContent = texts.description;
+        description.classList.add('hover');
+      }
+    
+     });
+  product.addEventListener('mouseleave', e => {
   let target = e.target;
   let card = target.firstElementChild;
   let description = card.firstElementChild;
-  console.log(target); 
   
-  if (card.classList.contains('selected')) {
-    description.textContent = texts.description;
-    description.classList.add('hover');
+  
+  if (description.textContent === texts.description) {
+    description.textContent = 'Сказочное заморское яство';
+    description.classList.remove('hover');
   }
 
-});
+});   
 
-
-
-
-
+})
 
 
 function changeText(element, currentText) {
@@ -61,8 +72,11 @@ function changeText(element, currentText) {
     if (element.dataset.order === 'liver') {
       element.innerHTML = texts.liver;
     }
-    if (element.dataset.order === 'liver') {
-      element.innerHTML = texts.liver;
+    else if (element.dataset.order === 'fish') {
+      element.innerHTML = texts.fish;
+    }
+    else if (element.dataset.order === 'chicken') {
+      element.innerHTML = texts.chicken;
     }
   } else {
     element.innerHTML = currentText;
