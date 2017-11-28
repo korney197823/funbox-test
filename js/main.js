@@ -20,16 +20,19 @@ const texts = {
 
 products.addEventListener('click', e => {
   e.preventDefault();
+  let currentTarget = e.currentTarget;
   let target = e.target;
-  
+  console.log(currentTarget);
+  let productOrderLink = currentTarget.firstElementChild.lastElementChild
 
   while (target != product) {
     if (target.classList.contains('card')) {
       highlight(target, 'selected');
-      changeText()
+      changeText(productOrderLink, currentText);
       return;
     } else if (target.tagName === 'A') {
       highlight(target.parentElement.parentElement.firstElementChild, 'selected');
+      changeText(productOrderLink, currentText);
       return;
     }
     target = target.parentNode;
@@ -38,13 +41,10 @@ products.addEventListener('click', e => {
 
 productList.forEach(function(product) {
    product.addEventListener('mouseenter', e => {
-      let target = e.target;
-      console.log(target)
-      console.log(this);
+      let target = e.currentTarget;
       let card = target.firstElementChild;
       let description = card.firstElementChild;
-      
-      
+           
       if (card.classList.contains('selected')) {
         description.textContent = texts.description;
         description.classList.add('hover');
@@ -52,15 +52,14 @@ productList.forEach(function(product) {
     
      });
   product.addEventListener('mouseleave', e => {
-  let target = e.target;
-  let card = target.firstElementChild;
-  let description = card.firstElementChild;
-  
-  
-  if (description.textContent === texts.description) {
-    description.textContent = 'Сказочное заморское яство';
-    description.classList.remove('hover');
-  }
+    let target = e.currentTarget;
+    let card = target.firstElementChild;
+    let description = card.firstElementChild;
+   
+    if ( description.textContent === texts.description ) {
+      description.textContent = 'Сказочное заморское яство';
+      description.classList.remove('hover');
+    }
 
 });   
 
