@@ -1,13 +1,11 @@
 'use strict';
 
-const products = document.querySelector('.products');
 const productList = document.querySelectorAll('.product')
-const product = document.querySelector('.product');
-const card = document.querySelector('.card');
+const cardList = document.querySelectorAll('.card');
+const productOrderLinkList = document.querySelectorAll('.product-order__link');
+
 const productOrder = document.querySelector('.product-order');
-const buyButton = document.querySelector('.product-order__link');
-const currentDescription = document.querySelector;
-const currentText = productOrder.innerHTML;
+const currentText = productOrder.textContent;
 const texts = {
   description: 'Котэ не одобряет?',
   liver: 'Печень утки разварная с артишоками.',
@@ -18,31 +16,37 @@ const texts = {
   chickenDisabled: 'Печалька, с курой закончился'
 };
 
-products.addEventListener('click', e => {
-  e.preventDefault();
-  let currentTarget = e.currentTarget;
-  let target = e.target;
-  console.log(currentTarget);
-  let productOrderLink = currentTarget.firstElementChild.lastElementChild
+cardList.forEach(card => {
+  card.addEventListener('click', e => {
+    const card = e.currentTarget;
+    const productOrder = card.nextElementSibling;
+    const productOrderLink = productOrder.nextElementSibling;
 
-  while (target != product) {
-    if (target.classList.contains('card')) {
-      highlight(target, 'selected');
-      changeText(productOrderLink, currentText);
-      return;
-    } else if (target.tagName === 'A') {
-      highlight(target.parentElement.parentElement.firstElementChild, 'selected');
-      changeText(productOrderLink, currentText);
-      return;
+    if (!card.classList.contains('disabled')) {
+      toggleClass(card, 'selected');
+      changeText(productOrder, currentText);
+      productOrderLink.classList.toggle('hide');  
     }
-    target = target.parentNode;
-  }
-});
+    
+  })
+})
 
-productList.forEach(function(product) {
-   product.addEventListener('mouseenter', e => {
-      let target = e.currentTarget;
-      let card = target.firstElementChild;
+productOrderLinkList.forEach(productOrderLink => {
+  productOrderLink.addEventListener('click', e => {
+    const productOrderLink = e.currentTarget;
+    const productOrder = productOrderLink.previousElementSibling;
+    const card = productOrder.previousElementSibling;
+
+    toggleClass(card, 'selected');
+    changeText(productOrder, currentText);
+    toggleClass(productOrderLink, 'hide');
+  })
+})
+
+
+cardList.forEach(function(card) {
+  card.addEventListener('mouseenter', e => {
+      let card = e.currentTarget;
       let description = card.firstElementChild;
            
       if (card.classList.contains('selected')) {
@@ -51,9 +55,8 @@ productList.forEach(function(product) {
       }
     
      });
-  product.addEventListener('mouseleave', e => {
-    let target = e.currentTarget;
-    let card = target.firstElementChild;
+  card.addEventListener('mouseleave', e => {
+    let card = e.currentTarget;
     let description = card.firstElementChild;
    
     if ( description.textContent === texts.description ) {
@@ -67,21 +70,21 @@ productList.forEach(function(product) {
 
 
 function changeText(element, currentText) {
-  if (element.innerHTML === currentText) {
+  if (element.textContent === currentText) {
     if (element.dataset.order === 'liver') {
-      element.innerHTML = texts.liver;
+      element.textContent = texts.liver;
     }
     else if (element.dataset.order === 'fish') {
-      element.innerHTML = texts.fish;
+      element.textContent = texts.fish;
     }
     else if (element.dataset.order === 'chicken') {
-      element.innerHTML = texts.chicken;
+      element.textContent = texts.chicken;
     }
   } else {
-    element.innerHTML = currentText;
+    element.textContent = currentText;
   }
 }
 
-function highlight(element, className) {
+function toggleClass(element, className) {
   element.classList.toggle(className);
 }
