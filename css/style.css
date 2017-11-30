@@ -109,8 +109,8 @@ input[type='checkbox'] {
 input:checked + .card {
   border-color: #e52e7a;
 }
-.card.disabled {
-  filter: grayscale(100%) contrast(25%);
+input:disabled + .card  {
+  filter: grayscale(100%) contrast(25%) !important;
   cursor: auto;
 }
 .card:hover.card::before {

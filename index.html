@@ -15,7 +15,7 @@
     <section class="products">
       <div class="product">
         <input type="checkbox" id="liver" value="liver" name="card">
-        <label for="liver" class="card">
+        <div class="card">
           <p class="card__description">Сказачное заморское яство</p>
           <h2 class="card__title">Нямушка</h2>
           <h3 class="card__subtitle">с фуа-гра</h3>
@@ -29,13 +29,14 @@
             <span class="weight__number">0,5</span>
             <span class="weight__unit">кг</span>
           </div>
-        </label>
+        </div>
         <p class="product-order" data-order="liver">Чего сидишь? Порадуй котэ, </p>
         <a class="product-order__link"> купи.</a>
       </div>
 
       <div class="product">
-        <div class="card">
+        <input type="checkbox" id="fish" value="fish" name="card">
+        <label for="fish" class="card">
           <p class="card__description">Сказачное заморское яство</p>
           <h2 class="card__title">Нямушка</h2>
           <h3 class="card__subtitle">с рыбой</h3>
@@ -50,13 +51,14 @@
             <span class="weight__number">2</span>
             <span class="weight__unit">кг</span>
           </div>
-        </div>
+        </label>
         <p class="product-order" data-order="fish">Чего сидишь? Порадуй котэ, </p>
         <a class="product-order__link"> купи.</a>
       </div>
 
       <div class="product">
-        <div class="card disabled">
+        <input type="checkbox" id="chicken" value="chicken" name="card" disabled>
+        <label for="chicken" class="card">
           <p class="card__description">Сказачное заморское яство</p>
           <h2 class="card__title">Нямушка</h2>
           <h3 class="card__subtitle">с курой</h3>
@@ -72,9 +74,9 @@
             <span class="weight__number">5</span>
             <span class="weight__unit">кг</span>
           </div>
-        </div>
-        <p class="product-order disabled" data-order="chicken">Чего сидишь? Порадуй котэ, </p>
-        <a class="product-order__link hide"> купи.</a>
+        </label>
+        <p class="product-order" data-order="chicken">Чего сидишь? Порадуй котэ, </p>
+        <a class="product-order__link"> купи.</a>
       </div>
     </section>
   </div>
