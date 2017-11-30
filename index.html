@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,14 @@
   <link rel="stylesheet" href="css/style.css">
   <title>Cat</title>
 </head>
+
 <body>
   <div class="wrapper">
     <h1 class="title">Ты сегодня покормил кота?</h1>
     <section class="products">
       <div class="product">
-        <div class="card">
+        <input type="checkbox" id="liver" value="liver" name="card">
+        <label for="liver" class="card">
           <p class="card__description">Сказачное заморское яство</p>
           <h2 class="card__title">Нямушка</h2>
           <h3 class="card__subtitle">с фуа-гра</h3>
@@ -26,8 +29,9 @@
             <span class="weight__number">0,5</span>
             <span class="weight__unit">кг</span>
           </div>
-        </div>
-        <p class="product-order" data-order="liver">Чего сидишь? Порадуй котэ, </p><a class="product-order__link"> купи.</a>
+        </label>
+        <p class="product-order" data-order="liver">Чего сидишь? Порадуй котэ, </p>
+        <a class="product-order__link"> купи.</a>
       </div>
 
       <div class="product">
@@ -39,14 +43,16 @@
             <li class="features__item">
               <strong>40</strong> порций
             </li>
-            <li class="features__item"><strong>2</strong> мыши в подарок</li>
+            <li class="features__item">
+              <strong>2</strong> мыши в подарок</li>
           </ul>
           <div class="weight">
             <span class="weight__number">2</span>
             <span class="weight__unit">кг</span>
           </div>
         </div>
-        <p class="product-order" data-order="fish">Чего сидишь? Порадуй котэ, </p><a class="product-order__link"> купи.</a>
+        <p class="product-order" data-order="fish">Чего сидишь? Порадуй котэ, </p>
+        <a class="product-order__link"> купи.</a>
       </div>
 
       <div class="product">
@@ -58,7 +64,8 @@
             <li class="features__item">
               <strong>100</strong> порций
             </li>
-            <li class="features__item"><strong>5</strong>мышей в подарок</li>
+            <li class="features__item">
+              <strong>5</strong>мышей в подарок</li>
             <li class="features__item">заказчик доволен</li>
           </ul>
           <div class="weight">
@@ -66,10 +73,12 @@
             <span class="weight__unit">кг</span>
           </div>
         </div>
-        <p class="product-order disabled" data-order="chicken">Чего сидишь? Порадуй котэ, </p><a class="product-order__link hide"> купи.</a>
+        <p class="product-order disabled" data-order="chicken">Чего сидишь? Порадуй котэ, </p>
+        <a class="product-order__link hide"> купи.</a>
       </div>
-    </section>  
+    </section>
   </div>
   <script src="js/main.js"></script>
 </body>
+
 </html>
