@@ -90,35 +90,73 @@ ul {
     margin-bottom: 1.071rem;
     padding: 1.286rem 3.214rem;
     text-align: left;
-    background-color: #ffffff;
-    background-image: url(../images/cat.jpg);
+    background: url(../images/cat.jpg),
+                linear-gradient(135deg, transparent 34px, #ffffff 0),
+                linear-gradient(135deg, transparent 30px, #1698d9 0);
     background-repeat: no-repeat;
-    background-position: 50% 183%;
-    border: 4px solid #1698d9;
+    background-position: 50% 183%, 0 0, 0 0;
+    border-bottom: 4px solid #1698d9;
+    border-right: 4px solid #1698d9;
     border-radius: 15px;
-    -webkit-clip-path: polygon(0 9%, 0 100%, 100% 100%, 100% 0, 13.5% 0);
-    clip-path: polygon(0 9%, 0 100%, 100% 100%, 100% 0, 13.5% 0);
     cursor: pointer;
     -webkit-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;
 }
-
 .card::before {
     position: absolute;
     content: '';
-    width: 19%;
-    height: 0.8%;
-    top: 3.38%;
-    left: -2.9%;
+    width: 86.7%;
+    height: 1%;
     background-color: #1698d9;
-    -webkit-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    top: 0;
+    right: 1px;
 }
+.card::after {
+    position: absolute;
+    content: '';
+    width: 1.5%;
+    height: 91.45%;
+    background-color: #1698d9;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    bottom: 0;
+    left: 0;
+}
+@supports (clip-path: polygon(0 9%, 0 100%, 100% 100%, 100% 0, 13.5% 0)) {
+    .card {
+        background: url(../images/cat.jpg);
+        background-color: #ffffff;
+        background-repeat: no-repeat;
+        background-position: 50% 183%;
+        border: 4px solid #1698d9;
+        -webkit-clip-path: polygon(0 9%, 0 100%, 100% 100%, 100% 0, 13.5% 0);
+        clip-path: polygon(0 9%, 0 100%, 100% 100%, 100% 0, 13.5% 0);
+    }
+    .card::before {
+        position: absolute;
+        content: '';
+        width: 19%;
+        height: 0.8%;
+        top: 3.42%;
+        left: -3.4%;
+        background-color: #1698d9;
+        -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        -webkit-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
+    }
+    .card::after {
+        content: none;
+    }
+}
+
+
+
 
 .card:hover {
     border-color: #2ea8e6;
